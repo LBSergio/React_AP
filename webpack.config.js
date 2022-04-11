@@ -7,6 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
   mode: 'development',
   resolve: {
@@ -14,6 +15,7 @@ module.exports = {
     alias: {
       '@components': path.resolve(__dirname, 'src/components/'),
       '@Scomponents': path.resolve(__dirname, 'src/styles/components/'),
+      '@containers': path.resolve(__dirname, 'src/containers/'),
     },
   },
   module: {
@@ -57,6 +59,7 @@ module.exports = {
   ],
   devServer: {
     static: path.join(__dirname, 'dist'),
+    historyApiFallback: true,
     compress: true,
     port: 3005,
   },
