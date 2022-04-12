@@ -24,12 +24,12 @@ const Information = () => {
                     </form>
                 </div>
                 <div className='Information-buttons'>
-                    <div className='Information-back'>
+                    <button type='button' className='Information-back'>
                         Back
-                    </div>
-                    <div className='Information-next'>
+                    </button>
+                    <button type='button' className='Information-next'>
                         Pay
-                    </div>
+                    </button>
                 </div> 
             </div>
             <div className='Information-sidebar'>
@@ -42,7 +42,7 @@ const Information = () => {
 
                         </h4>
                         <span>
-                            
+
                         </span>
                     </div>
                 </div>

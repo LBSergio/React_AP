@@ -16,7 +16,7 @@ const Checkout = () => {
                         </span>
                     </div>
                     <button type='button'>
-                        Delete element
+                        Delete
                     </button>
                 </div>
             </div>
@@ -25,7 +25,7 @@ const Checkout = () => {
                     Total price: $
                 </h3>
                 <button type='button'>
-                    Continue with the order
+                    Continue
                 </button>
             </div>
         </div>
