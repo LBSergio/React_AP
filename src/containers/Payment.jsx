@@ -3,7 +3,17 @@ import '@Scomponents/Payment.css';
 
 const Payment = () => {
     return(
-        <h1>Payment</h1>
+        <div className='Payment'>
+            <div className='Payment-content'>
+                <h3>
+
+                </h3>
+                <button type='button' className='Payment-button'>
+                    Pay with Paypal
+                </button>
+            </div>
+            <div/>
+        </div>
     );
 }
 
