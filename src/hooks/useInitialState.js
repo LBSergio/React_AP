@@ -8,7 +8,7 @@ const useInitialState = () => {
         setState({
             ...state,
             cart: [
-                ...state,
+                ...state.cart,
                  payload
                 ],
         });
