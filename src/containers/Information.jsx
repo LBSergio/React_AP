@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '@context/AppContext';
 import '@Scomponents/Information.css';
 
@@ -7,21 +7,24 @@ const Information = () => {
     const { state, addToBuyer } = React.useContext( AppContext );
     const { cart } = state;
     const form = React.useRef(null);
+    const history = useNavigate();
 
     const handleSubmit = () => {
         const formData = new FormData(form.current);
-        const buyer = {
-            'name': formData.get('name'),
-            'email': formData.get('email'),
-            'address': formData.get('address'),
-            'apto': formData.get('apto'),
-            'city': formData.get('city'),
-            'country': formData.get('country'),
-            'state': formData.get('state'),
-            'cp': formData.get('cp'),
-            'phone': formData.get('phone'),
-        }
+        // const buyer = {
+        //     'name': formData.get('name'),
+        //     'email': formData.get('email'),
+        //     'address': formData.get('address'),
+        //     'apto': formData.get('apto'),
+        //     'city': formData.get('city'),
+        //     'country': formData.get('country'),
+        //     'state': formData.get('state'),
+        //     'cp': formData.get('cp'),
+        //     'phone': formData.get('phone'),
+        // }
+        const buyer = Object.fromEntries(formData);
         addToBuyer(buyer);
+        history('/checkout/payment');
     }
 
     return(
@@ -61,9 +64,9 @@ const Information = () => {
             <div className='Information-sidebar'>
                 <h3>
                     Order
-                </h3>
-                {cart.map(item =>(
-                     <div className='Information-item' key={item.title}>
+                </h3>                
+                {cart.map((item, index) =>(                                                          
+                    <div className='Information-item' key={index}>
                         <div className='Information-element'>
                             <h4>
                                 {item.title}
@@ -72,7 +75,7 @@ const Information = () => {
                                 ${item.price}
                             </span>
                         </div>
-                    </div>
+                    </div>                            
                 ))}
             </div>
         </div>
