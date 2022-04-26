@@ -2,19 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '@context/AppContext';
 import '@Scomponents/Checkout.css';
-import { Product } from '../components/Product';
 
 const Checkout = () => {
     const { state, removeFromCart } = React.useContext( AppContext );
     const { cart } = state;
 
-    const handleRemove = product => () => {
-        removeFromCart(product);
+    const handleRemove = (product, index) => () => {
+        removeFromCart(product, index);
     }
 
     const handleSumTotal = () => {
         const reducer = (accumulator, currentValue) => accumulator + currentValue.price;
-        return sum = cart.reduce(reducer, 0);
+        const sum = cart.reduce(reducer, 0);
+        return sum;
     }
 
     return(
@@ -29,7 +29,7 @@ const Checkout = () => {
                         Without orders
                     </h3>
                 }
-                { cart.map(item => (
+                { cart.map((item, index) => (
                     <div className='Checkout-item'>
                     <div className='Checkout-element'>
                         <h4>
@@ -39,7 +39,7 @@ const Checkout = () => {
                             ${item.price}
                         </span>
                     </div>
-                    <button type='button' onClick={handleRemove(item)}>
+                    <button type='button' onClick={handleRemove(item, index)}>
                         <i className='fas fa-trash-alt'/>
                     </button>
                 </div>
